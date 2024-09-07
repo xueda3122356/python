@@ -6,8 +6,8 @@ def read_data():
     wb = openpyxl.load_workbook('./base_data/data01.xlsx', data_only= True)
     sh = wb.worksheets[0]
 
-    catogory_type = {}
-    count_total = []
+    catogory_type = {}  # {a:100, b:200}
+    count_total = []    # [1,2,3,4,5,6]
 
     for r in sh.iter_rows(min_row=1,values_only=True):
         count = r[3] * r[4]
@@ -19,7 +19,7 @@ def read_data():
         else:
             catogory_type[key] = count
     
-    return catogory_type,count_total # total value of each company and total value of every catogory
+    return catogory_type,count_total # total value of each company and total value of each item
 
 def save_data(catogory, count):
     wb = openpyxl.load_workbook('./base_data/data01.xlsx') 
@@ -31,7 +31,7 @@ def save_data(catogory, count):
     
     sh2 = wb.create_sheet('汇总金额')
 
-    for i,key in enumerate(catogory.keys(), start=1):
+    for i,key in enumerate(catogory.keys(), start=1):   
         sh2.cell(i,1,key)
         sh2.cell(i,2,catogory.get(key))
 
