@@ -18,5 +18,6 @@ def createPdf(wordPath, pdfPath):
     word.Quit(constants.wdDoNotSaveChanges)
 
 if __name__ == "__main__":
+    # 路径必须是绝对路径而不能是相对路径
     createPdf('F:/python/base_data/traffic_violation_notice.docx', 'F:/python/generate_data/21_word2pdf.pdf')
 
