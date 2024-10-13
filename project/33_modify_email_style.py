@@ -13,8 +13,12 @@ try:
 
 
     # 邮件内容
-    mail_text = 'This is an email I send to myself!'
-    msg_body = MIMEText(mail_text, 'plain')
+    mail_text = '''
+    <h1 style="color:blue">This is a email using html to display</h1>
+    <p>This is the main body of the email</p>
+    <p><a href = "http://www.baidu.com">This is a super link to baidu</a></p>
+'''
+    msg_body = MIMEText(mail_text, 'html')
     msg_body['From'] = Header('Test Department')
     msg_body['Subject'] = Header('Test Email')
 
@@ -28,4 +32,3 @@ except smtplib.SMTPException as e:
 
 finally:
     smtp_obj.quit()
-
